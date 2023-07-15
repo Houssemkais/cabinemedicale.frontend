@@ -7,8 +7,8 @@ import { AdminDashboardComponent } from './Admin/User/admin-dashboard/admin-dash
 import { CreateuserComponent } from './Admin/User/createuser/createuser.component';
 import { UpdateuserComponent } from './Admin/User/updateuser/updateuser.component';
 
-import { AppointmentComponent } from './appointment/appointment.component';
 import { UsertableComponent } from './Admin/usertable/usertable.component';
+import { AppointmenttableComponent } from './Admin/Appointment/appointmenttable/appointmenttable.component';
 
 const routes: Routes = [{ path:'', component: LoginComponent },
 { path:'inscription', component: RegistrationComponent },
@@ -24,7 +24,7 @@ const routes: Routes = [{ path:'', component: LoginComponent },
   children: [
     { path: '', redirectTo: 'usertable', pathMatch: 'full' }, // Default route
     { path: 'usertable', component: UsertableComponent },
-    { path: 'appointment', component: AppointmentComponent }
+    { path: 'appointment', component: AppointmenttableComponent },
   ]
 }
 ];

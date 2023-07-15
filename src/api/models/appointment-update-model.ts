@@ -1,7 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface AppointmentUpdateModel {
+  available?: boolean;
   date: string;
   reason: string;
-  status: 'PLANIFIE' | 'EN_COURS' | 'TERMINE' | 'ANNULE';
+  status: 'EN_COURS' | 'ANNULE';
 }

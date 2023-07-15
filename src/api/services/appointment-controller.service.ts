@@ -187,6 +187,62 @@ export class AppointmentControllerService extends BaseService {
   }
 
   /**
+   * Path part for operation cancelAppointment
+   */
+  static readonly CancelAppointmentPath = '/appointment/appointment/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `cancelAppointment()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  cancelAppointment$Response(params: {
+    id: number;
+    body: AppointmentUpdateModel
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AppointmentControllerService.CancelAppointmentPath, 'put');
+    if (params) {
+      rb.path('id', params.id, {});
+      rb.body(params.body, 'application/json');
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `cancelAppointment$Response()` instead.
+   *
+   * This method sends `application/json` and handles request body of type `application/json`.
+   */
+  cancelAppointment(params: {
+    id: number;
+    body: AppointmentUpdateModel
+  },
+  context?: HttpContext
+
+): Observable<void> {
+
+    return this.cancelAppointment$Response(params,context).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
    * Path part for operation create2
    */
   static readonly Create2Path = '/appointment';

@@ -1,0 +1,36 @@
+<body>
+    <h2>Update Appointment</h2>
+    
+    <!-- Formulaire de mise à jour d'utilisateur -->
+    <form (submit)="updateAppointment()" #appointmentForm="ngForm">  
+    <div>
+        <label>Reason</label>
+          <mat-form-field >
+            <input matInput placeholder="reason" [(ngModel)]="appointment.reason" name="reason" required>
+          </mat-form-field>
+          <div *ngIf="appointmentForm.controls['reason']?.invalid && (appointmentForm.controls['reason']?.dirty || appointmentForm.controls['reason']?.touched)" class="error-message">Reason is required.</div>
+        </div>
+        <div>
+            <label>Date</label><br>
+        {{date}}
+        <mat-form-field >
+         
+          <input
+              matInput
+              [matDatepicker]="dp"
+              placeholder="Verbose datepicker"
+              [(ngModel)]="date"
+              name="date"
+          >
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field>
+      
+        <div *ngIf="appointmentForm.controls['date']?.invalid && (appointmentForm.controls['date']?.dirty || appointmentForm.controls['date']?.touched)" class="error-message">dateOfBirth is required.</div>
+
+        </div>
+       
+ <button mat-raised-button color="primary" type="submit">Update</button>
+    </form>
+    </body>
+    

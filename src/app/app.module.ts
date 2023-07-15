@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { AppointmentComponent } from './appointment/appointment.component';
 import { AdminDashboardComponent } from './Admin/User/admin-dashboard/admin-dashboard.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -44,7 +43,13 @@ import { UsertableComponent } from './Admin/usertable/usertable.component';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { AppointmenttableComponent } from './appointment/appointmenttable/appointmenttable.component';
+import { AppointmenttableComponent } from './Admin/Appointment/appointmenttable/appointmenttable.component';
+import { CreateAppointmentComponent } from './Admin/Appointment/create-appointment/create-appointment.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UpdateAppointmentComponent } from './Admin/Appointment/update-appointment/update-appointment.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { AaaComponent } from './aaa/aaa.component';
+
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   useExisting: forwardRef(() => TokenHttpInterceptor),
@@ -72,13 +77,19 @@ export const MY_DATE_FORMAT = {
         LoginComponent,
         RegistrationComponent,
         ForgotPasswordComponent,
-        AppointmentComponent,
+        
         AdminDashboardComponent,
         CreateuserComponent,
         UpdateuserComponent,
        UsertableComponent,
         NavbarComponent,
         AppointmenttableComponent,
+        CreateAppointmentComponent,
+        UpdateAppointmentComponent,
+        AaaComponent,
+
+  
+    
       
     ],
     providers: [UserserviceService, API_INTERCEPTOR_PROVIDER, TokenHttpInterceptor,
@@ -87,6 +98,7 @@ export const MY_DATE_FORMAT = {
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
+        NgxMaterialTimepickerModule,
         AppRoutingModule,
         HttpClientModule,
         SidebarModule,
@@ -113,6 +125,7 @@ export const MY_DATE_FORMAT = {
         MatTableModule,
         MatSortModule,
         ApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
+        MatSnackBarModule,
     ]
 })
 export class AppModule { }

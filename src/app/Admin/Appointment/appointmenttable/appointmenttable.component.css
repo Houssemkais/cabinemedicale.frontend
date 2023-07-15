@@ -1,0 +1,44 @@
+.mat-table {
+  width: 150%;
+  table-layout: fixed;
+  display: flex;
+  
+
+}
+
+.mat-column-id,
+.mat-column-doctor,
+.mat-column-patient,
+.mat-column-reason,
+.mat-column-status,
+.mat-column-date
+ {
+  width: 150px; 
+  max-width: 150px; /* Ajoutez cette ligne pour définir une largeur maximale */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mat-column-actions {
+  white-space: nowrap;
+}
+
+.mat-header-cell,
+.mat-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.addApp{
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 200px;
+  margin-left:90%;
+  
+}

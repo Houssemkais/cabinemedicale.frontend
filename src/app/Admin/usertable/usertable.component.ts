@@ -39,17 +39,18 @@ export class UsertableComponent implements OnInit {
 }
 
   public refreshUserDataSource(){
-    this.userControllerService.findAll({ filter: { firstname: this.searchValue } }).subscribe(
+    this.userControllerService.findAll().subscribe(
     
       userList => {
 
         this.userDataSource.data = userList;
         this.userDataSource.paginator = this.paginator;
         this.userDataSource.sort = this.sort; 
-        this.userDataSource.filterPredicate = function (record,filter) {
-          return record.lastname.toLocaleLowerCase() == filter.toLocaleLowerCase();
-         }
-
+      
+         this.userDataSource.filterPredicate = (data: (User | Admin | Doctor | Patient | Secretary), filter: string) => {
+          const searchData = data.id + ' ' + data.firstname + ' ' + data.lastname + ' ' + data.email + ' ' + data.phone + ' ' + data.dateOfBirth+''+data.address+''+data.sex+''+data.userRole;
+          return searchData.toLowerCase().includes(filter);
+        };
       }
 
 
